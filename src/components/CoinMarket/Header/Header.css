@@ -1,16 +1,15 @@
 header{
-    background-color: var(--gris2);
-    
+    box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
 }
 .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
+    height: 80px;
     padding: 30px;
 }
 .logo{
-    width: 220px;
+    width: 190px;
     height: 40px;
 }
 nav{
@@ -18,21 +17,23 @@ nav{
 }
 nav ul{
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: flex-end;
     list-style: none;
 }
 nav ul li{
-    
+    margin:  30px 15px 0 15px;
     font-size: 1.8rem;
-    color: var(--gris1);
+    
 }
-
+.input{
+    margin:  25px 15px 0 15px;
+}
 nav ul li:hover{
     border-bottom: 1px solid var(--gris1);
 }
 
 nav ul li .link{
     text-decoration: none;
-    color: var(--gris1);
+    color: black;
+    font-weight: bolder;
 }

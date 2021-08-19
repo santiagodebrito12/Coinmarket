@@ -1,7 +1,7 @@
 import React,{useReducer}  from 'react'
 import CriptoContext from './CriptoContext';
 import { CriptoReducer } from './CriptoReducer';
-import {firebase ,googleAuthProvider } from '../../firebase/conector';
+import {firebase ,googleAuthProvider, GithubAuthProvider , FacebookAuthProvider} from '../../firebase/conector';
 import axios from 'axios';
 
 
@@ -19,12 +19,12 @@ const CriptoState = (props) => {
 
     const getTopList = async() =>{ 
        
-        const res = await axios.get(`https://min-api.cryptocompare.com/data/top/totalvolfull?limit=50&tsym=USD`)
+        const res = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&limit=20&order=market_cap_desc&per_page=50&page=1&sparkline=false`)
        
-        console.log(res.data.Data);
+      console.log(res.data)  
         dispatch({
             type:'OPTION-CRIPTO',
-            payload:res.data.Data
+            payload:res.data
         })
     }
 
@@ -54,7 +54,16 @@ const CriptoState = (props) => {
          })
     } 
     const gitAuth = () =>{
-        
+        firebase.auth().signInWithPopup(GithubAuthProvider)
+        .then( (userCred) =>{
+           console.log(userCred)
+        })
+    }
+    const FacebookAuth= () =>{
+        firebase.auth().signInWithPopup(FacebookAuthProvider)
+        .then( (userCred) =>{
+           console.log(userCred)
+        })
     }
 
     return (
@@ -68,6 +77,8 @@ const CriptoState = (props) => {
            getRes,
            addFav,
            googleAuth,
+           FacebookAuth,
+           gitAuth,
          
        }}>
            {props.children}

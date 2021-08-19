@@ -16,11 +16,11 @@ const TopListTable = () => {
     
 
     return (
-        <div className="container p-5 mt-5 table-responsive ">
-            <table className="table shadow-sm p-5 mb-5 bg-body rounded table-light  table-hover">
+        <div className="container-xl p-3 mt-5 m-auto table-responsive ">
+            <table className="table p-5 mb-5  rounded   table-hover" id="table">
               
-                <thead className="table-dark">
-                    <tr className="m-5">
+                <thead className="table-light">
+                    <tr className="m-2 p-2">
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col">Name</th>
@@ -29,8 +29,10 @@ const TopListTable = () => {
                     <th scope="col">Market Cap</th>
                     <th scope="col">Volumen(24h)</th>
                     <th scope="col">Circulating Supply</th>
+                    <th scope="col">Select</th>
                     </tr>
                 </thead>
+              
                 <tbody>
                    { toplist.map((cripto,i)=>{
                         

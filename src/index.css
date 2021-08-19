@@ -28,17 +28,16 @@ html {
   --bg-10:#eef0f1;
 }
 body{
-  background-color: var(--bg-10) ;
+  background-color: #fff;
   margin: 0;
   padding: 0;
-  font-family: var(--headingFont);
+  font-family: var(--headingFont2);
   font-size: 16px;
   box-sizing: border-box;
 }
 
 
 h1{
-  color: #fff;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   margin-top: 5%;

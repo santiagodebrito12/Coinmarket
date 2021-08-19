@@ -1,29 +1,30 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import logo from '../../../img/logo3.png';
+import logo from '../../../img/logo4.svg';
 
 import './Header.css';
 
 const Header = () => {
     return (
         <header>
-        <div className="container header"> 
+        <div className="container-xl header"> 
             <div className="contenedor-logo">
                 <Link to="/coinmarket"><img src={logo} alt="logo" className="logo"/></Link>
             </div>
             <nav>
                 <ul>
                 <li><Link className="link" to="/coinmarket/fav">Favoritos</Link></li>
-          
                 <li><Link className="link">Portafolio</Link></li>
-               
+                <input type="text" placeholder="Buscar" className="w-50 input" />
+{/*                
                 <li><Link className="link ">Sign In</Link></li>
-                <li><Link className="link">Log out</Link></li>
+                <li><Link className="link">Log out</Link></li> */}
 
 
                 </ul>
             </nav>
             </div>
+            
         </header>
     )
 }

@@ -1,20 +1,26 @@
 import React,{useContext} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import CriptoContext from '../../context/CriptoContext/CriptoContext';
+import CoinMarket from '../CoinMarket/CoinMarket';
 import './Login.css';
 
 const Login = () => {
-    const {googleAuth} = useContext(CriptoContext)
+    const {googleAuth,gitAuth,FacebookAuth} = useContext(CriptoContext)
+    
     return (
         
         <div className="contenedor-auth">
             <h1 className="login">Welcome to CoinMarket</h1>
            
             <div className="auth__social-networks ">
-            
+                
+
                 <div 
                     className="redes-btn btn-google w-75"
-                    onClick={googleAuth}
+                    onClick={()=>{
+                        googleAuth()
+                        
+                    }}
                 >
                     <div className="google-icon-wrapper">
                     <i className="fab fa-google fa-2x icono"></i>
@@ -24,9 +30,11 @@ const Login = () => {
                         <b>Sign in with google</b>
                     </p>
                 </div>
+            
                 <div 
                     className="redes-btn btn-twitter  w-75"
-                    onClick={googleAuth}
+                    onClick={FacebookAuth}
+                    
                 >
                     <div className="google-icon-wrapper">
                     <i className="fab fa-twitter fa-2x icono"></i>
@@ -37,7 +45,7 @@ const Login = () => {
                      </div>
                 <div 
                     className="redes-btn btn-git w-75"
-                    onClick={googleAuth}
+                    onClick={gitAuth}
                 >
                     <div className="google-icon-wrapper">
                     <i className="fab fa-github fa-2x icono"></i>
@@ -48,7 +56,7 @@ const Login = () => {
                 </div>
             </div>
             <div>
-                <p>Already have an account? <Link to="singup">Log in</Link></p>
+                <p className="text-center">Already have an account? <Link to="singup">Log in</Link></p>
             </div>
         </div>
         
