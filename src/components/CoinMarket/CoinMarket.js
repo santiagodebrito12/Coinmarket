@@ -1,18 +1,21 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { BrowserRouter as  Router,Switch,Route,Redirect } from 'react-router-dom';
 import CriptoDetail from './CriptoDetail/CriptoDetail';
 import FavList from './FavList/FavList';
 import Header from './Header/Header';
 import TopListTable from './TopListTable/TopListTable';
 const CoinMarket = () => {
+ 
+    
     return (
         <>
             <Header/>
            
                 <Switch>
-                    <Route  exact path="/coinmarket" component={TopListTable}/>
-                    <Route exact path="/coinmarket/fav" component={FavList}/>
-                    <Route exact path="/coinmarket/detail" component={CriptoDetail}/>                  
+                    <Route  exact path="/coinmarket" component={TopListTable} />
+                    <Route exact path="/coinmarket/fav" component={FavList} />
+                    <Route exact path="/coinmarket/detail" component={CriptoDetail}/>     
+                    <Redirect to="coinmarket"/>          
                 </Switch>
               
 

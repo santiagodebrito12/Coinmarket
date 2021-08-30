@@ -40,8 +40,10 @@ const TopListTable = () => {
 
                         return(
                             <TableTr
+                            
                             cripto={cripto}
                             i={i}
+                            key={cripto.id}
                             />
                            
                         )

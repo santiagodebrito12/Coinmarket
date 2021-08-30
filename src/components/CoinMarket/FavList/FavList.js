@@ -3,8 +3,8 @@ import FavContext from '../../../context/FavList/FavListContext'
 
 const FavList = () => {
     
-    const{favs}= useContext(FavContext)
-    console.log(favs)
+    const{favs,deleteFav}= useContext(FavContext)
+    console.log(deleteFav);
     return (
         <div className="container-xl p-5 mt-5 table-responsive ">
             <table className="table shadow-sm p-5 mb-5 bg-body rounded table-light  table-hover">
@@ -22,15 +22,21 @@ const FavList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                   { favs.map((cripto,i)=>{
+
+                   {favs 
+                   ? favs.map((cripto,i)=>{
                         
                         const {id,name,current_price,market_cap,high_24h,low_24h,market_cap_change_percentage_24h,total_volume,total_supply}=cripto;
 
                         return(
-                            <tr key={id} >
+                            <tr key={id}>
                             <td>{i+1}</td>
                            
-                            <td><i class="fas fa-heart" ></i></td>
+                            <td onClick={()=>{
+                               deleteFav(cripto.id)
+                               
+                              }  
+                            }> <i className="fas fa-heart"></i></td>
                            
               
                                   <td>{name}</td>
@@ -44,7 +50,10 @@ const FavList = () => {
                            
                         )
 
-                    })}
+                    })
+                    :<p>No hay favoritos</p>
+                }
+                
                 </tbody>
                 </table>
         </div>

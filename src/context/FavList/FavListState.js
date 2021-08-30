@@ -1,4 +1,4 @@
-import React,{useReducer} from 'react'
+import React,{useReducer,useState} from 'react'
 import FavContext from './FavListContext'
 import { FavReducer } from './FavLisReducer';
 
@@ -9,17 +9,29 @@ const FavListState = (props) => {
     const [state, dispatch] = useReducer(FavReducer, initialState)
     
 
-    const addFav = (cripto)=>{
+    const addFav = cripto =>{
         dispatch({
             type:'ADD-FAV',
             payload:cripto,
         })
     }
+
+    const deleteFav= id =>{
+        dispatch({
+            type:'DELETE_FAV',
+            payload:id,
+        })
+    }
+
+   
+
     return (
         <FavContext.Provider value={{
             
             favs:state,
             addFav,
+            deleteFav,
+            
             
         }}>
             {props.children}

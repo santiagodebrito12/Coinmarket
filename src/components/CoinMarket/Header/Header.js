@@ -16,9 +16,7 @@ const Header = () => {
                 <li><Link className="link" to="/coinmarket/fav">Favoritos</Link></li>
                 <li><Link className="link">Portafolio</Link></li>
                 <input type="text" placeholder="Buscar" className="w-50 input" />
-{/*                
-                <li><Link className="link ">Sign In</Link></li>
-                <li><Link className="link">Log out</Link></li> */}
+
 
 
                 </ul>

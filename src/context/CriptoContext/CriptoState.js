@@ -1,4 +1,4 @@
-import React,{useReducer}  from 'react'
+import React,{useReducer,useState}  from 'react'
 import CriptoContext from './CriptoContext';
 import { CriptoReducer } from './CriptoReducer';
 import {firebase ,googleAuthProvider, GithubAuthProvider , FacebookAuthProvider} from '../../firebase/conector';
@@ -13,15 +13,15 @@ const CriptoState = (props) => {
         res:0,
     }
     
+    const[user,setUser]=useState({})
+    const[activeUser,setActiveUser]=useState(false);
 
     const [state, dispatch] = useReducer(CriptoReducer, initialState)
 
 
     const getTopList = async() =>{ 
        
-        const res = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&limit=20&order=market_cap_desc&per_page=50&page=1&sparkline=false`)
-       
-      console.log(res.data)  
+        const res = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&limit=20&order=market_cap_desc&per_page=50&page=1&sparkline=false`) 
         dispatch({
             type:'OPTION-CRIPTO',
             payload:res.data
@@ -51,18 +51,34 @@ const CriptoState = (props) => {
         firebase.auth().signInWithPopup(googleAuthProvider)
          .then( (userCred) =>{
             console.log(userCred)
+            setUser(userCred)
+            setTimeout(()=>{
+                setActiveUser(true);
+    
+               },2000)
          })
     } 
     const gitAuth = () =>{
         firebase.auth().signInWithPopup(GithubAuthProvider)
         .then( (userCred) =>{
            console.log(userCred)
+           setUser(userCred)
+           setTimeout(()=>{
+            setActiveUser(true);
+
+           },2000)
         })
     }
     const FacebookAuth= () =>{
         firebase.auth().signInWithPopup(FacebookAuthProvider)
         .then( (userCred) =>{
            console.log(userCred)
+           setUser(userCred);
+           setTimeout(()=>{
+            setActiveUser(true);
+
+           },2000)
+           
         })
     }
 
@@ -72,6 +88,8 @@ const CriptoState = (props) => {
            toplist:state.toplist,
            select:state.select,
            res:state.res,
+           activeUser,
+           user,
            getTopList,
            getSelect,
            getRes,
